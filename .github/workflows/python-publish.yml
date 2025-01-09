@@ -15,14 +15,18 @@ jobs:
 
       - uses: cachix/install-nix-action@master
 
-      - id: check
+      - name: Check versions
         run: |
             v1=$(curl https://test.pypi.org/pypi/libasterix/json | jq '.info | .version')
+            echo "Published version: $v1"
+
             v2=$(cat libs/python/pyproject.toml | grep "^version" | sed -e 's/version = //')
+            echo "Current version: $v2"
+
             if [ "$v1" != "$v2" ]; then
-                echo "update=true" >> "$GITHUB_OUTPUT";
+                echo "update=true" | tee -a "$GITHUB_OUTPUT";
             else
-                echo "update=false" >> "$GITHUB_OUTPUT";
+                echo "update=false" | tee -a "$GITHUB_OUTPUT";
             fi
 
       - name: Build release distributions
@@ -39,7 +43,7 @@ jobs:
           path: libs/python/dist/
 
   pypi-publish:
-    if: ${{ needs.release-build.outputs.update.VALUE == 'true' }}
+    if: ${{ needs.release-build.outputs.update == 'true' }}
     runs-on: ubuntu-latest
     needs:
       - release-build
