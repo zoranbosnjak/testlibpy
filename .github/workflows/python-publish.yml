@@ -1,8 +1,6 @@
 name: Upload Python Package
 
 on:
-  schedule:
-    - cron: '0,20,40 * * * *'
   workflow_dispatch: {}
 
 permissions:
