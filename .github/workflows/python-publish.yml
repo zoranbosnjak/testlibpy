@@ -39,7 +39,7 @@ jobs:
           path: libs/python/dist/
 
   pypi-publish:
-    if: needs.release-build.outputs.update == 'true'
+    if: ${{ needs.release-build.outputs.update }} == "true"
     runs-on: ubuntu-latest
     needs:
       - release-build
