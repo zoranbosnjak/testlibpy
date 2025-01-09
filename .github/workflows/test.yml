@@ -16,6 +16,7 @@ jobs:
       - uses: cachix/install-nix-action@master
 
       - name: Check versions
+        id: check
         run: |
             v1=$(curl https://test.pypi.org/pypi/libasterix/json | jq '.info | .version')
             echo "Published version: $v1"
@@ -39,7 +40,7 @@ jobs:
     steps:
       - name: Test
         run: |
-            echo ${{ needs.release-build.outputs }}
-            echo ${{ needs.release-build.outputs.update }}
-            echo ${{ needs.release-build.outputs.update == 'proceed' }}
+            echo ${{ needs.release-build.steps.check.outputs }}
+            echo ${{ needs.release-build.steps.check.outputs.update }}
+            echo ${{ needs.release-build.steps.check.outputs.update == 'proceed' }}
 
