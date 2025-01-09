@@ -10,13 +10,13 @@ jobs:
   release-build:
     runs-on: ubuntu-latest
 
+    outputs:
+        output1: ${{ steps.check.outputs.update }}
+
     steps:
       - uses: actions/checkout@v4
 
       - uses: cachix/install-nix-action@master
-
-      - outputs:
-          output1: ${{ steps.check.outputs.update }}
 
       - name: Check versions
         id: check
