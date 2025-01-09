@@ -20,7 +20,7 @@ jobs:
       - name: Build release distributions
         run: |
           cd libs/python
-          nix-shell
+          nix-build
           python -m pip install build
           python -m build
 
