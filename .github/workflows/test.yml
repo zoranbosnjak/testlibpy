@@ -15,6 +15,9 @@ jobs:
 
       - uses: cachix/install-nix-action@master
 
+      - outputs:
+          output1: ${{ steps.check.outputs.update }}
+
       - name: Check versions
         id: check
         run: |
