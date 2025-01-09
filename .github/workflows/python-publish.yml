@@ -10,12 +10,16 @@ jobs:
   release-build:
     runs-on: ubuntu-latest
 
+    outputs:
+      update: ${{ steps.check.outputs.update }}
+
     steps:
       - uses: actions/checkout@v4
 
       - uses: cachix/install-nix-action@master
 
       - name: Check versions
+        id: check
         run: |
             v1=$(curl https://test.pypi.org/pypi/libasterix/json | jq '.info | .version')
             echo "Published version: $v1"
