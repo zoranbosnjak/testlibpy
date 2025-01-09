@@ -40,7 +40,8 @@ jobs:
     steps:
       - name: Test
         run: |
-            echo ${{ needs.release-build.steps.check.outputs }}
-            echo ${{ needs.release-build.steps.check.outputs.update }}
-            echo ${{ needs.release-build.steps.check.outputs.update == 'proceed' }}
+            echo ${{ needs.release-build.outputs }}
+            echo ${{ needs.release-build.outputs.update }}
+            echo ${{ needs.release-build.outputs.check-update }}
+            echo ${{ needs.release-build.outputs.update == 'proceed' }}
 
