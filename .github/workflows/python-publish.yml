@@ -56,10 +56,8 @@ jobs:
           path: libs/python/dist/
 
   pypi-publish:
-    if: ${{ needs.check-versions.outputs.update == 'proceed' }}
     runs-on: ubuntu-latest
     needs:
-      - check-versions
       - release-build
     permissions:
       id-token: write
