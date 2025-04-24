@@ -1,5 +1,19 @@
 # Asterix data processing libraries
 
+test1
+
+```python
+# comment
+print()
+```
+
+test2
+
+```python {.python file=test.py}
+# comment
+print()
+```
+
 This project builds on top of
 [asterix-specs](https://zoranbosnjak.github.io/asterix-specs/) - asterix
 definition files.
