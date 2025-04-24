@@ -14,6 +14,13 @@ test2
 print()
 ```
 
+test3
+
+```python {file=test.py}
+# comment
+print()
+```
+
 This project builds on top of
 [asterix-specs](https://zoranbosnjak.github.io/asterix-specs/) - asterix
 definition files.
